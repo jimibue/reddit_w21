@@ -4,7 +4,9 @@ const Home = (props) => {
   return (
     <div>
       <p>Home</p>
-      <p>{`${props.info}`}</p>
+      <a href="/users">User demo</a>
+      <a href="/cars">Cars demo</a>
+      <a href="/subs">Subs demo</a>
     </div>
   );
 };
