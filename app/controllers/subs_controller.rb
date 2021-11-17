@@ -1,42 +1,66 @@
 class SubsController < ApplicationController
+  before_action :set_sub, only: [:show, :edit, :update, :destroy]
   # get '/subs'
   def index
-    # TODO: display all subs, get all subs
-
-    # RENDER Component
-    render component: "Subs"
+    render component: "Subs", props: { subs: Sub.all }
   end
 
   # get '/subs/new'
   def new
-    # TODO return form to create new sub
     render component: "NewSub"
   end
 
   # post '/subs'
   def create
-    #TODO: Create a new sub
+    # sub = Sub.new(params.require(:sub).permit(:name))
+    # create sub in memory
+    sub = Sub.new(sub_params)
+    # try to save it to DB (will validation)
+    if (sub.save)
+      redirect_to subs_path
+    else
+      #TODO:  render our new form with sub(to show errors)
+    end
   end
 
   # get '/subs/:id'
   def show
-    # display a specific sub
-    render component: "Sub"
+    # sub = Sub.find(params[:id])
+    render component: "Sub", props: { sub: @sub }
   end
 
   # get 'subs/:id/edit'
   def edit
-    # TODO: return form for editing User
-    render component: "EditSub"
+    # sub = Sub.find(params[:id])
+    # TODO: return form for editing Sub (want sub )
+    render component: "EditSub", props: { sub: @sub }
   end
 
   #put/patch '/subs/:id'
   def update
     #TODO Update sub
+    if (@sub.update(sub_params))
+      redirect_to subs_path
+    else
+      #TODO: render our edit form with sub(to show errors)
+    end
   end
 
   # delete 'subs/:id'
   def destroy
-    #TODO delete a specific sub
+    # sub = Sub.find(params[:id])
+    @sub.destroy
+    redirect_to subs_path
+  end
+
+  # do this for now:  private means only visible to class
+  private
+
+  def sub_params
+    params.require(:sub).permit(:name)
+  end
+
+  def set_sub
+    @sub = Sub.find(params[:id])
   end
 end
