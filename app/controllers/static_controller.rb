@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  def home
+  def taco
     render component: "Home", props: { info: "Yo" }
   end
 end
