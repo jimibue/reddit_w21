@@ -8,7 +8,8 @@ const Subs = (props) => {
         <div className="sub-container">
           <p>id: {sub.id}</p>
           <p>name: {sub.name}</p>
-          <a href={`/subs/${sub.id}`}>Show</a>
+          <a href={`/subs/${sub.id}`}>Sub Show</a>
+          <a href={`/subs/${sub.id}/topics`}>Topics Index</a>
           <a href={`/subs/${sub.id}/edit`}>Edit</a>
           <a href={`/subs/${sub.id}`} data-method="delete">
             Delete
