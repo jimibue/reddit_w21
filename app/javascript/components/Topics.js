@@ -9,6 +9,13 @@ const Topics = (props) => {
           <p>topic id:{topic.id}</p>
           <p>{topic.body}</p>
           <a href={`/subs/${props.sub.id}/topics/${topic.id}`}>show</a>
+          <a href={`/subs/${props.sub.id}/topics/${topic.id}/edit`}>edit</a>
+          <a
+            data-method="delete"
+            href={`/subs/${props.sub.id}/topics/${topic.id}`}
+          >
+            delete
+          </a>
         </div>
       );
     });
@@ -20,6 +27,7 @@ const Topics = (props) => {
 
       {/* a link to go back to subs index */}
       <a href={`/subs`}>back to subs</a>
+      <a href={`/subs/${props.sub.id}/topics/new`}>New Topic</a>
       <hr />
       <h2>Topics: </h2>
       {renderTopics()}

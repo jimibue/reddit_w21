@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     resources :topics
   end
 
+  resources :topics do
+    resources :comments
+  end
+
   # CRUD FOR TOPICS ar going to be given a sub_id
   # all topics for a given sub
   # get "/subs/:sub_id/topics", to: "topics#index"
