@@ -8,6 +8,12 @@ class TopicsController < ApplicationController
     render component: "Topics", props: { sub: @sub, topics: @sub.topics }
   end
 
+  # GET	/subs/:sub_id/topics/:id
+  # show a single topics
+  def show
+    render component: "Topic", props: { topic: @topic }
+  end
+
   private
 
   def set_sub

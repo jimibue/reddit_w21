@@ -8,6 +8,7 @@ const Topics = (props) => {
           <h3>{topic.name}</h3>
           <p>topic id:{topic.id}</p>
           <p>{topic.body}</p>
+          <a href={`/subs/${props.sub.id}/topics/${topic.id}`}>show</a>
         </div>
       );
     });
