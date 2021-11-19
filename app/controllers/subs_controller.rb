@@ -1,11 +1,18 @@
 class SubsController < ApplicationController
   before_action :set_sub, only: [:show, :edit, :update, :destroy]
   # get '/subs'
+  # return all subs
+
+  def react_demo
+    render component: "Demo"
+  end
+
   def index
     render component: "Subs", props: { subs: Sub.all }
   end
 
   # get '/subs/new'
+  # render a form for new sub
   def new
     render component: "NewSub"
   end
@@ -14,6 +21,7 @@ class SubsController < ApplicationController
   def create
     # sub = Sub.new(params.require(:sub).permit(:name))
     # create sub in memory
+    # we a use a class method
     sub = Sub.new(sub_params)
     # try to save it to DB (will validation)
     if (sub.save)

@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :update, :destroy, :edit]
 
   # get 'subs/:sub_id/topics'
-  # return topics for a given sub
+  # return all topics for a given sub
   def index
     render component: "Topics", props: { sub: @sub, topics: @sub.topics }
   end

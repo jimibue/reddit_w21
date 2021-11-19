@@ -30,6 +30,24 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  # resources :artists do
+  #   resources :songs
+  # end
+
+  delete "/artist/:artist_id/songs/:id", to: "songs#destroy"
+
+  get "/artists/:artist_id/songs/:id", to: "songs#x"
+  get "/x/:yoyoyo/1", to: "songs#x"
+
+  get "/songs/new", to: "songs#new"
+  get "/songs/:id", to: "songs#show"
+
+  get "/taco", to: "songs#taco"
+
+  get "/react/demo", to: "subs#react_demo"
+
+  # '/songs/new'
+
   # CRUD FOR TOPICS ar going to be given a sub_id
   # all topics for a given sub
   # get "/subs/:sub_id/topics", to: "topics#index"
